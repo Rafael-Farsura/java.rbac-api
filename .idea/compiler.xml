@@ -9,13 +9,10 @@
         <module name="users" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Rbac-Users" target="17" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="17" />
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Rbac-Users" options="-parameters" />
       <module name="users" options="-parameters" />
     </option>
   </component>

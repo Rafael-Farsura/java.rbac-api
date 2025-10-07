@@ -1,13 +1,13 @@
 package com.api.users.entity;
 
-import jakarta.persistence.*;
 
-import java.security.Permission;
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+
 @Entity
-@Table(name =  "role")
+@Table(name = "roles")
 public class Role {
 
     @Id
@@ -15,27 +15,21 @@ public class Role {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String roleName;
+    private String name;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users = new HashSet<>();
-
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "roles_permissions",
+            name = "role_permissions",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "permission_id")
     )
     private Set<Permission> permissions = new HashSet<>();
 
     public Long getId() { return id; }
-    public void setId(Long Id) { this.id = id; }
+    public void setId(Long id) { this.id = id; }
 
-    public String getRoleName() { return roleName; }
-    public void setRoleName(String roleName) { this.roleName = roleName; }
-
-    public Set<User> getUsers() { return users; }
-    public void setUsers(Set<User> users) { this.users = users; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
     public Set<Permission> getPermissions() { return permissions; }
     public void setPermissions(Set<Permission> permissions) { this.permissions = permissions; }
