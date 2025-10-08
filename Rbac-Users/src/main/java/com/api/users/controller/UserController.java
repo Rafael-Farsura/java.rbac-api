@@ -4,13 +4,10 @@ import com.api.users.dto.CreateUserDto;
 import com.api.users.dto.UpdateUserDto;
 import com.api.users.entity.*;
 import com.api.users.services.UserService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api/users")

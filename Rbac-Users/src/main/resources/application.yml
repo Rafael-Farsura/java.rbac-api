@@ -1,11 +1,10 @@
 spring:
-  application:
-    name: rbac
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: admin
-    password: admin123
+    url: jdbc:postgresql://localhost:5432/rbacdb
+    username: rbacuser
+    password: rbacpass
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -13,6 +12,10 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+
 server:
   port: 8080
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG

@@ -3,11 +3,9 @@ package com.api.users.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-import java.util.Objects;
 import java.util.Set;
 
-public class CreateUserDto {
-
+public abstract class CreateUserDto {
     @NotBlank
     @Size(min = 5, max = 20)
     private String username;
