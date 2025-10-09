@@ -2,7 +2,7 @@ package com.api.users.controller;
 
 import com.api.users.dto.CreateUserDto;
 import com.api.users.dto.UpdateUserDto;
-import com.api.users.entity.*;
+import com.api.users.entity.User;
 import com.api.users.services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
