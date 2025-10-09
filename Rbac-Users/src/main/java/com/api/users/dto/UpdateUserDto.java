@@ -1,6 +1,7 @@
 package com.api.users.dto;
 
 import jakarta.validation.constraints.Size;
+
 import java.util.Set;
 
 public abstract class UpdateUserDto {

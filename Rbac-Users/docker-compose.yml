@@ -1,10 +1,10 @@
-version: "3.8"
+version: "3.9"
 
 services:
   db:
     image: postgres:15-alpine
     container_name: rbac-postgres
-    restart: unless-stopped
+    restart: always
     environment:
       POSTGRES_DB: rbacdb
       POSTGRES_USER: rbacuser
@@ -12,8 +12,26 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
       - ./db:/docker-entrypoint-initdb.d:ro
 
+  api:
+    build: .
+    container_name: rbac-api
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/rbacdb
+      SPRING_DATASOURCE_USERNAME: rbacuser
+      SPRING_DATASOURCE_PASSWORD: rbacpass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8080:8080"
+    command: >
+      sh -c "sleep 10 && mvn clean compile install spring-boot:run"
+    restart: on-failure
+
 volumes:
-  pgdata:
+  db_data:

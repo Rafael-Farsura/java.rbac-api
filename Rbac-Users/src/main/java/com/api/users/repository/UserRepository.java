@@ -2,6 +2,7 @@ package com.api.users.repository;
 
 import com.api.users.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.Optional;
 
 
